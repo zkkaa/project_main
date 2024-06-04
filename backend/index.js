@@ -35,11 +35,11 @@ app.register((fastifyStatic), {
   prefix: '/public/',
 })
 
-app.listen({ port: 3000, host: '0.0.0.0'}, function (err, address) {
+app.listen({ port: 3000, host: '0.0.0.0'}, function (err) {
   if (err) {
     app.log.error(err);
   }
-  console.log("server running on port" + address);
+  console.log("server running on port " + app.server.address().port);
 });
 
 
