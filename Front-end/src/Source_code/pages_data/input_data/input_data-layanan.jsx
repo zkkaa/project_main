@@ -6,6 +6,7 @@ import axios from "axios";
 import { DataTersimpan } from "../../component/PopUp/data-tersimpan";
 import { DataTelahTerdaftar } from "../../component/PopUp/data-telah-terdaftar";
 import { Link } from "react-router-dom";
+import { apiURL } from "../../../main";
 
 export default function Input_Layanan() {
   const [StatusLayanan, setStatusLayanan] = useState("");
@@ -19,7 +20,7 @@ export default function Input_Layanan() {
     formData.append("StokLayanan", StokLayanan);
     axios
       .post(
-        "http://localhost:3000/Data/data_layanan/Input_data_layanan",
+        new URL("/Data/data_layanan/Input_data_layanan", apiURL),
         formData
       )
       .then((res) => {

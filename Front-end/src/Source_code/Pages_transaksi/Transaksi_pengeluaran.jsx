@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import QuantitySelector from "../component/fitur_tambahan/tambahkurang_angka";
 import { useState } from "react";
 import axios from "axios";
+import { apiURL } from "../../main";
 
 export default function Transaksi_pengeluaran() {
     const [Nama, setNama] = useState("")
@@ -18,7 +19,7 @@ export default function Transaksi_pengeluaran() {
       e.preventDefault();
       axios
       .post(
-        "http://localhost:3000/transaksi/pengeluaran",
+        new URL("/transaksi/pengeluaran", apiURL),
         {Nama, Produk, uraian, kuantitas, Harga}
       )
       .then((res) => {

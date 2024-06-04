@@ -5,6 +5,7 @@ import { NavLink, Link } from "react-router-dom";
 import "../CSS/Pages_Data/Data_layanan.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { apiURL } from "../../main";
 
 export default function DataLayanan() {
   const [search, setSearch] = useState("");
@@ -78,7 +79,7 @@ export function TampilanLayanan({search}){
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Data/data_layanan")
+      .get(new URL("/Data/data_layanan", apiURL))
       .then((res) => {
         const responseData = res.data;
         setData(responseData);
@@ -92,7 +93,7 @@ export function TampilanLayanan({search}){
             <li className="li-produk-page-layanan" key={item.Id_Layanan}>
               <div className="div_terdaftar-page-layanan">
                 <div className="gambar_terdaftar-page-layanan">
-                  <img src={`http://localhost:3000/public/${item.Poto_Layanan}`} alt="" />
+                  <img src={`https://bersaku.my.id/public/${item.Poto_Layanan}`} alt="" />
                 </div>
                 <div className="keterangan_terdaftar-page-layanan">
                   <div className="div-top-page-layanan">

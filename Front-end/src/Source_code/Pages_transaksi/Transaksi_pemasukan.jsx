@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import InputTransaksi_pemasukan from "../Pages_transaksi/InputTransksi/input_transaksi.jsx";
+import { apiURL } from "../../main.jsx";
 
 export default function Transaksi_pemasukan() {
   //handle pelanggan
@@ -190,7 +191,7 @@ const ProductCartBarang = ({ AddCart }) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Data/data_barang")
+      .get(new URL("/Data/data_barang", apiURL))
       .then((res) => {
         const responseData = res.data;
         setData(responseData);
@@ -206,7 +207,7 @@ const ProductCartBarang = ({ AddCart }) => {
             <div className="div_terdaftar-pt">
               <div className="gambar_terdaftar-pt">
                 <img
-                  src={`http://localhost:3000/public/${item.Poto_Barang}`}
+                  src={`https://bersaku.my.id/public/${item.Poto_Barang}`}
                   alt=""
                 />
               </div>

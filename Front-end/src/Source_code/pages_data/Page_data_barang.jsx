@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "../CSS/Pages_Data/Data_barang.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { apiURL } from "../../main";
 
 export default function DataBarang() {
   const [search, setSearch] = useState("");
@@ -73,7 +74,7 @@ export function Tampilan_Data({search}) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Data/data_barang")
+      .get(new URL("/Data/data_barang", apiURL))
       .then((res) => {
         const responseData = res.data;
         setData(responseData);
@@ -89,7 +90,7 @@ export function Tampilan_Data({search}) {
             <div class="box_barang">
               <div class="gambar_terdaftar-box">
                 <img
-                  src={`http://localhost:3000/public/${item.Poto_Barang}`}
+                  src={`https://bersaku.my.id:3000/public/${item.Poto_Barang}`}
                   alt=""
                 />
               </div>

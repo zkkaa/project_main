@@ -5,13 +5,14 @@ import { NavLink, Link } from "react-router-dom";
 import "../CSS/Pages_Data/Data_pelanggan.css";
 import {useState, useEffect} from "react";
 import axios from "axios";
+import { apiURL } from "../../main";
 
 export default function DataPelanggan() {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Data/data_pelanggan")
+      .get(new URL("/Data/data_pelanggan", apiURL))
       .then((res) => {
         const responseData = res.data;
         setData(responseData);

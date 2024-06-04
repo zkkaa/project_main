@@ -6,13 +6,14 @@ import axios from "axios";
 import { DataTersimpan } from "../../component/PopUp/data-tersimpan";
 import { DataTelahTerdaftar } from "../../component/PopUp/data-telah-terdaftar";
 import { Link } from "react-router-dom";
+import { apiURL } from "../../../main";
 
 export default function Input_Pelanggan() {
   const [StatusPelanggan, setStatusPelanggan] = useState("");
   function Handle_inputPelanggan(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/Data/data_pelanggan/Input_data_pelanggan", {
+      .post(new URL("/Data/data_pelanggan/Input_data_pelanggan", apiURL), {
         NamaPelanggan,
         NomerTeleponPelanggan,
         AlamatPelanggan,

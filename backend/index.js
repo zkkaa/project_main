@@ -22,7 +22,7 @@ const app = fastify({
 app.register(fastifyFormbody);
 app.register(fastifyCors),
   {
-    origin: "http://localhost:5173",
+    origin: "https://bersaku.my.id",
     methods: ["GET", "POST"],
   };
 
@@ -35,7 +35,7 @@ app.register((fastifyStatic), {
   prefix: '/public/',
 })
 
-app.listen({ port: 3000 }, function (err, address) {
+app.listen({ port: 3000, host: '0.0.0.0'}, function (err, address) {
   if (err) {
     app.log.error(err);
   }

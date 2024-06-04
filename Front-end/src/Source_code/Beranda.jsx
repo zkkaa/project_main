@@ -13,6 +13,7 @@ import {
 } from "@phosphor-icons/react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { apiURL } from "../main";
 
 function Cont() {
   const [data, setData] = useState([]); 
@@ -22,7 +23,7 @@ function Cont() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Data/data_barang")
+      .get(new URL("/Data/data_barang", apiURL))
       .then((res) => {
         const responseData = res.data;
         setData(responseData);
@@ -31,7 +32,7 @@ function Cont() {
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Info")
+      .get(new URL("/Info", apiURL))
       .then((res) => {
         const responseDana = res.data;
         setDana(responseDana);
@@ -42,7 +43,7 @@ function Cont() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Data/data_layanan")
+      .get(new URL("/Data/data_layanan"), apiURL)
       .then((res) => {
         const responseData = res.data;
         setDataLayanan(responseData);
@@ -172,7 +173,7 @@ console.log(data)
             <div class="box_barang">
               <div class="gambar_terdaftar-box">
                 <img
-                  src={`http://localhost:3000/public/${item.Poto_Barang}`}
+                  src={`https://bersaku.my.id/public/${item.Poto_Barang}`}
                   alt=""
                 />
               </div>
@@ -253,7 +254,7 @@ console.log(data)
             <li className="li-produk-page-layanan" key={item.Id_Layanan}>
               <div className="div_terdaftar-page-layanan">
                 <div className="gambar_terdaftar-page-layanan">
-                  <img src={`http://localhost:3000/public/${item.Poto_Layanan}`} alt="" />
+                  <img src={`https://bersaku.my.id/public/${item.Poto_Layanan}`} alt="" />
                 </div>
                 <div className="keterangan_terdaftar-page-layanan">
                   <div className="div-top-page-layanan">

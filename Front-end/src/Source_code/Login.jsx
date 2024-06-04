@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import { LoginBerhasil } from "./component/PopUp/login-berhasil";
 import { GagalLogin } from "./component/PopUp/gagal-login";
+import { apiURL } from "../main";
 
 function Container() {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ function Container() {
   function HandleSubmit(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/login", { username, password })
+      .post(new URL('/login', apiURL), { username, password })
       .then((res) => {
         console.log(res);
         if (res.data.record == "login succesfully") {

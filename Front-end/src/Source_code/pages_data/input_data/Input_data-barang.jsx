@@ -7,6 +7,7 @@ import { DataTersimpan } from "../../component/PopUp/data-tersimpan";
 import { DataTelahTerdaftar } from "../../component/PopUp/data-telah-terdaftar";
 import { Link } from "react-router-dom";
 import { Camera } from "@phosphor-icons/react";
+import { apiURL } from "../../../main";
 
 export default function Input_Barang() {
   const [StatusBarang, setStatusBarang] = useState("");
@@ -20,7 +21,7 @@ export default function Input_Barang() {
     formData.append("StokBarang", StokBarang);
     axios
       .post(
-        "http://localhost:3000/Data/data_barang/Input_data_barang",
+        new URL("Data/data_barang/Input_data_barang", apiURL),
         formData
       )
       .then((res) => {

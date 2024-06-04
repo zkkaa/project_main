@@ -5,6 +5,7 @@ import { Car, MagnifyingGlass } from "@phosphor-icons/react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { apiURL } from "../../../main";
 
 export default function InputTransaksi_pemasukan({total, Cart}) {
   const [data, setData] = useState([]);
@@ -21,7 +22,7 @@ export default function InputTransaksi_pemasukan({total, Cart}) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Data/data_pelanggan")
+      .get("http://:3000/Data/data_pelanggan")
       .then((res) => {
         const responseData = res.data;
         setData(responseData);
@@ -58,7 +59,7 @@ export default function InputTransaksi_pemasukan({total, Cart}) {
 
     useEffect(() => {
       axios
-        .get("http://localhost:3000/Info")
+        .get(new URL("/Info", apiURL))
         .then((res) => {
           const responseDana = res.data;
           setDana(responseDana);
@@ -98,7 +99,7 @@ export default function InputTransaksi_pemasukan({total, Cart}) {
       console.log(Cart)
       axios
       .post(
-        "http://localhost:3000/Transaksi/pemasukan",
+        new URL("/Transaksi/pemasukan", apiURL),
         {data, newItem, Cart}
       )
       .then((res) => {
@@ -107,7 +108,7 @@ export default function InputTransaksi_pemasukan({total, Cart}) {
 
       axios
       .post(
-        "http://localhost:3000/pemasukan",
+        new URL("/pemasukan", apiURL),
         {upPemasukan, upSaldo}
       )
       .then((res) => {

@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 import { Printer, Trash } from "@phosphor-icons/react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { apiURL } from "../../main";
 
 export default function Rekap_pemasukan() {
   const [dataPemasukan, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Rekap/Rekap_pemasukan")
+      .get(new URL("/Rekap/Rekap_pemasukan", apiURL))
       .then((res) => {
         const responseData = res.data;
         setData(responseData);
